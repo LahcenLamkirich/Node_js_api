@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Ajouter Un Utilisateur </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+</br>
+    <div class="container">
+        <h2 style="text-align: center; text-decoration: underline;"> <%= title %> </h2></br>
+        <form action="/save" method="POST">
+            <div class="form-group">
+                <label for="username" style="font-weight: bold;"> Username : </label>
+                <input type="text" class="form-control" id="name" placeholder="Enter The Name " name="username" required /> 
+            </div>
+            <div class="form-group">
+                <label for="email" style="font-weight: bold;">Email : </label>
+                <input type="email" class="form-control" id="email" placeholder="Enter The Email " name="email" required/> 
+            </div>
+            <div class="form-group">
+                <label for="password" style="font-weight: bold;"">Password : </label>
+                <input type="password" class="form-control" id="password" placeholder="Enter The Password" name="password" required/> 
+            </div>
+            <div class="form-group">
+                <label for="role" style="font-weight: bold;"> Role : </label>
+                <select id="role" name="role">
+                    <optgroup label="THE ROLE">
+                        <option>AUTHOR</option>
+                        <option>GUEST</option>
+                        <option>ADMIN</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary"> Add User </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
