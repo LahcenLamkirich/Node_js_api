@@ -7,21 +7,50 @@
         .container {
             padding: 0%;
         }
+        body { font-family: sans-serif; }
+
+    #main-menu .nav-bar { list-style:none; margin-top: 20px;font-weight: bold; text-decoration: underline; }
+    #main-menu .nav-bar li { display:inline; padding:0 10px; }
+
+    #main-menu .nav-bar li a {
+    text-decoration: none;
+    padding-left: 25px;
+    text-transform: uppercase;
+    color: #333;
+        text-shadow: 1px 1px 1px #ccc;
+    }
+
+    .nav-bar .nav-button-home a { background:url("https://www.cheesetoast.co.uk/cheesepress/wp-content/uploads/2012/08/home.gif") no-repeat 0px -2px transparent; }
+
+    .nav-bar .nav-button-services a { background:url("https://www.cheesetoast.co.uk/cheesepress/wp-content/uploads/2012/08/services.gif") no-repeat 0px -2px transparent; }
+
+    .nav-bar .nav-button-products a { background:url("https://www.cheesetoast.co.uk/cheesepress/wp-content/uploads/2012/08/products.gif") no-repeat 0px -2px transparent; }
+
+/* Icons courtesy of Thom : http://pixelb.in/assorted-pixel-perfect-14px-icon-set-286/ */
     </style>
+
 </head>
 <body>
+    <nav id="main-menu">
+        <ul class="nav-bar">
+             <li class="nav-button-home"><a href="">Home</a></li>
+        </ul>
+   </nav>
+  <hr>
+
 </br>
     <div class="container">
         <h2 style="text-align: center; text-decoration: underline;"><%= title %> </h2></br>
         <a href="/add" class="btn btn-sm btn-primary"> Add User </a></br> <br>
         <table class="table table-dark table-striped">
             <thead>
-                <tr>
+                <tr>    
                     <th>Id</th>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Password</th>
                     <th>Role</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +61,8 @@
                         <td><%= user.email %></td>
                         <td><%= user.password %></td>
                         <td><%= user.role %></td>
-                        <td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td class="btnbtn">
                             <a href="/edit/<%= user.id %>" class="btn btn-sm btn-primary"> Edit </a> 
                             <a href="/delete/<%= user.id %>" class="btn btn-sm btn-danger"> Delete </a>
                         </td>

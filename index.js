@@ -17,26 +17,14 @@ app.use(bodyParser.urlencoded({
 // Parse request data content tupe application/JSON
 app.use(bodyParser.json());
 
-// define root route 
-// app.get('/', (req, res) => {
-//     res.send("WEB API BLOG !") ;
-// });
-
 // import user routes 
-
 const userRoutes = require('./src/routes/user.route') ; 
 const dbConn = require('./config/db.config');
 
 // create user routes 
 
 app.use('/users', userRoutes);
- 
-
-// liste to the port 
-app.listen(port, () => {
-    console.log(`Express server is running in http://localhost:${port}`)
-});
-
+// The views :
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -59,14 +47,11 @@ app.get('/add', function(req, res){
 
 app.post('/save', (req,res) => {
     let data = {username: req.body.username, email: req.body.email, password: bcrypt.hashSync(req.body.password, saltRounds), role: req.body.role } ;
-    // let password1 = req.body.password ; 
-    // console.log(password1);
-
     let sql = "INSERT INTO users SET ?" ;
     dbConn.query(sql, data, (err, results) => {
         if(err) throw err ;
         res.redirect('/') ;
-    }); 
+    });
 });
 
 app.get('/edit/:userId', (req, res) => {
@@ -88,7 +73,7 @@ app.post('/update', (req,res) => {
         function (err, results){
         if(err) throw err ;
         res.redirect('/') ;
-    }); 
+    });
 });
 
 
@@ -101,29 +86,12 @@ app.get('/delete/:userId', (req, res) => {
     });
 });
 
-app.listen(8080, function(error){
-    if(error) throw error
-    console.log("Server created Successfully") 
+
+app.listen(port, () => {
+    console.log(`Express server is running in http://localhost:${port}`)
 });
 
-// this use to connect with The Html Page : 
-
-// let http = require('http');
-// let fs = require('fs');
-
-// let handleRequest = (request, response) => {
-//     response.writeHead(200, {
-//         'Content-Type': 'text/html'
-//     });
-//     fs.readFile('./index.html', null, function (error, data) {
-//         if (error) {
-//             response.writeHead(404);
-//             respone.write('Whoops! File not found!');
-//         } else {
-//             response.write(data);
-//         }
-//             response.end();
-//     });
-// };
-
-// http.createServer(handleRequest).listen(8000);
+// app.listen(5000, function(error){
+//     if(error) throw error
+//     console.log("Server created Successfully") 
+// });
